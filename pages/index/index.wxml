@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName + "的todolist"}}</text>
+  </view>
+  <view>
+      <input class='todoList'  bindinput='todoinput' bindchange='todoChange' placeholder='输入需要做的事' auto-focus/>
+      <button bindtap='addTodo' class='todoButton' size='default' type='primary'>
+          添加任务
+      </button>
+  	<view  class='todoList' wx:key="todo" wx:for="{{todoList}}" wx:for-index="idx" wx:for-item="itemName" >
+        <view wx:key="*this">
+            <text class='todo-text'>任务{{idx}}:{{itemName.time + " " + itemName.things}}</text>
+            <icon class='delete-icon' bindtap='deleteItem'  data-index='{{idx}}' type="clear" />
+        </view>
+  	</view>
+  </view>
+</view>
